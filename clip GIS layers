@@ -1,0 +1,13 @@
+arcpy
+# Set the workspace and environment variables
+arcpy.env.workspace = r"C:\FILEPATH TO\PROJECT NAME.gdb"
+arcpy.env.overwriteOutput = True
+# Set the input feature classes and the clipping polygon
+input_fc_list = ["contours", "easements", "buildings", "impervious", "trails", "streets", "parks", "barriers", "pard_maintained", "parcels"]
+clip_fc = r"C:\FILEPATH TO\PROJECT NAME.gdb\CLIP"
+# Loop through each feature class and clip it using the clipping polygon
+for fc in input_fc_list:
+    output_fc = fc + "_clip"
+    arcpy.Clip_analysis(fc, clip_fc, output_fc)
+    print("Clipped {} to {}".format(fc, output_fc))
+    print("All feature classes have been clipped successfully!")
