@@ -1,0 +1,15 @@
+arcpy
+
+# Set the workspace to the folder containing the layers you want to export
+arcpy.env.workspace = r"C:\FILEPATH TO\FILE.aprx"
+
+# List the layers you want to export
+layers = ["barriers_clip", "streets_clip", "trails_clip", "contours_clip", "TCADparcels_clip", "pard_maintained_clip", "parks_clip", "impervious_clip", "buildings_clip", "easements_clip"]
+
+# Set the output directory and AutoCAD file name
+output_folder = r"C:\PROJECT_FILEPATH_TO\Drawings_Graphic\AutoCAD"
+output_file = "site_name_BASE.dwg"
+
+# Use the ExportCAD tool to export the layers to AutoCAD format
+arcpy.ExportCAD_conversion(layers, "DWG_R2013", output_folder + "\\" + output_file)
+
